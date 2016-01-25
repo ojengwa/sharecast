@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Sharecast",
+  "description": "Share your screen to the world",
+  "version": "0.1",
+  "content_security_policy": "default-src",
+  "description": "A plain text description",
+  "icons": {
+    "16": "app/images/icon.png",
+    "48": "app/images/icon.png",
+    "128": "app/images/icon.png"
+    },
+  "storage": {
+    "managed_schema": "schema.json"
+  },
+  "permissions": [
+    "tabs",
+    "desktopCapture",
+    "https://*.ngrok.com/*",
+    "https://www.googleapis.com/*",
+    "https://ssl.gstatic.com/",
+    "https://broadcast-with-respoke.herokuapp.com/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "content_scripts": [{
+    "matches": ["https://4295bcc1.ngrok.com/*", "https://broadcast-with-respoke.herokuapp.com/*"],
+    "js": ["content.js"],
+    "run_at": "document_end"
+  }]
+}
